@@ -35,7 +35,9 @@ p {
   justify-content: center;
   align-items: center;
 }
-
+.card{
+  z-index: 99;
+}
 .waves {
   position:relative;
   width: 100%;

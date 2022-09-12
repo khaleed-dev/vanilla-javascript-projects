@@ -10,37 +10,61 @@
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/search.js" type="module"></script>
     <script src="./js/explore.js" type="module"></script>
-    <title>Explore</title>
+    <title>Search Results</title>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container-fluid">
-        <a href="/index.html" class="navbar-brand">aflamDB</a>
-        
-        <div id="search-compnent">
-          <input id="search-input" class="form-control  m-auto position-relative" type="search" name="search" id="search-input" placeholder="search for a movie" autocomplete="off">
-          <div id="search-results" class="hide">
-              <ul class="list-group">
-                  <div data-search-lis> </div>
-              </ul>
+    <div class="offcanvas offcanvas-5 offcanvas-top text-bg-dark" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+        <div class="offcanvas-header">
+          <div id="search-compnent">
+            <input id="search-input" type="search" name="search" placeholder="search for a movie" autocomplete="off">
           </div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div><a class="pure-material-button-text" href="/browse.html">Browse Movies</a></div>
+        <div class="offcanvas-search-body">
+          <div id="search-results" class="hide">
+            <ul class="list-group">
+                <div data-search-lis> </div>
+            </ul>
+        </div>
+        </div>
     </div>
-  </nav>
-    <section id="browse-movies" class="container mt-3">
-        <h2>Search Results <span class="fs-5 total-pages"></span></h2>
-        <div class="card mt-3">
-            <div class="card-header text-center">
-                <a href="/explore.html" class="pure-material-button-text">Search</a>
-                <a href="/browse.html" class="pure-material-button-text">Browse Movies</a>
-            </div>
-            <div class="card-body">
-                <div class="browse-movies-list d-flex flex-wrap justify-content-center text-dark">
-                  <!-- movies go here -->
+    <div class="app">
+        <div class="sticky-sidenav fs-4">
+            <ul class="sidebar-items">
+              <li>
+                <a href="/" class="side-links">
+                  <i class="bi bi-house"></i>
+                </a>
+              </li>
+              <li>
+                <a href="/browse.html" class="side-links">
+                  <i class="bi bi-tv selected"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="side-links" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+                  <i class="bi bi-search"></i>
+                </a>
+              </li>
+            </ul>
+            <a href="https://github.com/khaleed-dev" target="_blank" class="side-links link-light p-1 mb-1" style="font-size: 12px">
+              @khaleed-dev
+            </a>
+        </div>
+        <section id="browse-movies" class="container mt-4">
+            <h2>Search Results <span class="fs-5 total-pages"></span></h2>
+            <div class="card text-bg-dark border-around mt-3">
+                <div class="card-header text-center">
+                    <a href="/explore.html" class="pure-material-button-text explore-search-btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">New Search</a>
+                    <a href="/browse.html" class="pure-material-button-text">Browse Movies</a>
+                </div>
+                <div class="card-body">
+                    <div class="browse-movies-list d-flex flex-wrap justify-content-center">
+                      <!-- movies go here -->
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 </body>
 </html>

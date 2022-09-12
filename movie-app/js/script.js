@@ -7,7 +7,7 @@ function addCarouselContent(){
 
 }
 function renderDailyTrends(){
-    const wrapper = document.querySelector('.daily-trends-wrapper')
+    const wrapper = document.querySelector('#scroll-menu .row')
     dailyTrends.results.forEach((movie) => {
         wrapper.innerHTML += `
         <div class="col">

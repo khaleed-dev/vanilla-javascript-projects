@@ -4,6 +4,7 @@ const moviesList = document.querySelector('.browse-movies-list')
 const tmdb = new Tmdb
 const url = new URL(window.location.href)
 const URLQuery = url.searchParams.get("query")
+const searchBtn = document.querySelector('.explore-search-btn')
 let currentPage = 1
 
 if(URLQuery != null){
@@ -17,6 +18,10 @@ if(URLQuery != null){
 }else{
     moviesList.innerHTML = '<div>You can search for a movie in any language</div>'
 }
+
+searchBtn.addEventListener('click', () => {
+    moviesList.innerHTML = ''
+})
 
 function infiniteScroll(totalPages){
     const scrollable = document.documentElement.scrollHeight - window.innerHeight

@@ -20,8 +20,6 @@ const movieDetails = await tmdb.getMovieDetails(movieID)
 const movieCredits = await tmdb.getCredits(movieID)
 const similarMovies = await tmdb.getSimilar(movieID)
 
-console.log(movieDetails)
-
 const trailerInfo = showMovieTrailer()
 if(trailerInfo != undefined){
     const trailerKey = trailerInfo.key

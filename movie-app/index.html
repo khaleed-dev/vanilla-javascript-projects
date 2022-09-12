@@ -13,8 +13,23 @@
     <title>Movies</title>
 </head>
 <body>
+  <div class="offcanvas offcanvas-5 offcanvas-top text-bg-dark" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+    <div class="offcanvas-header">
+      <div id="search-compnent">
+        <input id="search-input" type="search" name="search" placeholder="search for a movie" autocomplete="off">
+      </div>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-search-body">
+      <div id="search-results" class="hide">
+        <ul class="list-group">
+            <div data-search-lis> </div>
+        </ul>
+    </div>
+    </div>
+  </div>
+  
   <div class="app">
-
     <div class="sticky-sidenav fs-4">
       <ul class="sidebar-items">
         <li>
@@ -28,7 +43,7 @@
           </a>
         </li>
         <li>
-          <a href="#" class="side-links">
+          <a href="#" class="side-links" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
             <i class="bi bi-search"></i>
           </a>
         </li>
@@ -143,7 +158,7 @@
           </div>
         </div>
         <div id="scroll-menu">
-          <div class="row daily-trends-wrapper mt-5">
+          <div class="row scroll-menu-content mt-5">
             <!-- <div class="col">
               <div class="movie-card p-0" style="width: 210px;">
                 <a href="/movie.html">
@@ -163,41 +178,6 @@
               </div>
             </div> -->
           </div>          
-        </div>
-      </section>
-
-      <section id="mw-movies" class="my-5">
-        <div class="container-xl">
-          <div class="d-flex justify-content-between ">
-            <h5>Trending Movies Today</h5>
-            <a class="text-decoration-none" href="/browse.html">
-              More
-              <i class="bi bi-chevron-double-right"></i>
-            </a>
-          </div>
-        </div>
-        <div id="scroll-menu">
-          <div class="row daily-trends-wrapper mt-5">
-            <div class="col">
-              <div class="movie-card p-0" style="width: 210px;">
-                <a href="/movie.html">
-                  <img class="movie-card-img rounded w-100 mb-2" src="https://dummyimage.com/220x280/000/fff">
-                </a>
-                <div class="movie-card-header d-flex">
-                  <h5>The Shawshenk Redemption</h5>
-                  <span class="fw-semibold">1987</span>
-                </div>
-                <div>
-                  <i class="bi-star-fill text-warning"></i>
-                  <span data-sm-vote-average>9.3</span>
-                </div>
-                <div>
-                  <span data-sm-votes>(1,000,000)</span>
-                </div>
-              </div>
-            </div>
-          </div>          
-
         </div>
       </section>
     </div>

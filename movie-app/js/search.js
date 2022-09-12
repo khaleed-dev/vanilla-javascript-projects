@@ -5,6 +5,8 @@ const WEBSITE = "http://127.0.0.1:5500"
 const UISearchInput = document.querySelector('#search-input')
 const UISearchResultsWrapper = document.querySelector('#search-results')
 const UISearchLis = document.querySelector('[data-search-lis]')
+const offcanvas = document.querySelector('.offcanvas')
+
 //? api instances
 const tmdb = new Tmdb
 const weeklyTrends = await tmdb.getMovieTrendingWeekly()
@@ -14,11 +16,12 @@ document.addEventListener('click', (e) => {
     if(e.target.matches('#search-input') && UISearchInput.value === ''){
         showSearchTrends()
         UIShowSearchResults()
-    }else if(!e.target.matches('.search-result') && !e.target.matches('.trending-item')){
-        UIHideSearchResults()
     }
     if(e.target.matches('#search-input') && UISearchInput.value !== ''){
         UIShowSearchResults()
+    }
+    if(!offcanvas.classList.contains('show')){
+        UIHideSearchResults()
     }
 })
 UISearchInput.addEventListener('keyup', (e) => {
@@ -28,8 +31,10 @@ UISearchInput.addEventListener('keyup', (e) => {
     if(searchQuery !== '') showSearchRecommendations(searchQuery)
     if(e.key === 'Enter'){
         window.location.href = `${WEBSITE}/explore.html?query=${searchQuery}`
+    }else if(e.key === 'Escape'){
+        UISearchInput.value = ''
+        UIHideSearchResults()
     }
-    
 })
 //? functions
 
@@ -42,21 +47,22 @@ async function showSearchRecommendations(query){
         let release_year = (result.release_date).split('-')[0]
         if(count > 9) return
         UISearchLis.innerHTML += 
-        `<a class="list-group-item d-flex justify-content-between" href="http://127.0.0.1:5500/explore.html?query=${result.title}"><div>${result.title} <small class="text-muted ">(${release_year})</small></div><small class="fs-6 text-muted">${result.original_title}</small></a>`
+        `
+        <a class="list-group-item list-group-item-action d-flex justify-content-between" href="http://127.0.0.1:5500/explore.html?query=${result.title}"><div>${result.title} <small class="text-muted ">(${release_year})</small></div><small class="fs-6 text-muted">${result.original_title}</small></a>`
         count ++
     })
 }
 function showSearchTrends(){
-    UISearchLis.innerHTML = `<li class="list-group-item trending-item"><img src="../images/trend.png" style="width: 20px; margin-right: 10px;"> Trending</li>`
+    UISearchLis.innerHTML = `<li class="list-group-item trending-item xz"><img src="../images/trend.png" style="width: 20px; margin-right: 10px;"> Trending</li>`
 
     weeklyTrends.forEach((result) => {
         if(result.title == undefined){
             UISearchLis.innerHTML += `
-            <a class="list-group-item search-trends" href="http://127.0.0.1:5500/explore.html?query=${result.name}">${result.name}</a>
+            <a class="list-group-item list-group-item-action search-trends" href="http://127.0.0.1:5500/explore.html?query=${result.name}">${result.name}</a>
             `
         }else{
             UISearchLis.innerHTML += `
-            <a class="list-group-item search-trends" href="http://127.0.0.1:5500/explore.html?query=${result.title}">${result.title}</a>
+            <a class="list-group-item list-group-item-action search-trends" href="http://127.0.0.1:5500/explore.html?query=${result.title}">${result.title}</a>
             `
         }
     })
@@ -67,9 +73,18 @@ function hideSearchTrends(){
     }
 }
 //? utility functions
-function UIShowSearchResults(){UISearchResultsWrapper.classList.remove('hide')}
-function UIHideSearchResults(){UISearchResultsWrapper.classList.add('hide')}
-
+function UIShowSearchResults(){
+    UISearchResultsWrapper.classList.remove('hide')
+    offcanvas.classList.remove('offcanvas-5')
+    offcanvas.classList.add('offcanvas-35')
+}
+function UIHideSearchResults(){
+    UISearchResultsWrapper.classList.add('hide')
+    UISearchLis.innerHTML = ''
+    offcanvas.classList.add('offcanvas-5')
+    offcanvas.classList.remove('offcanvas-35')
+    UISearchInput.value = ''
+}
 
 /*
 todo

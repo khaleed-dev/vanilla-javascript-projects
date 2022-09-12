@@ -13,61 +13,86 @@
     <title>Movies</title>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container-fluid">
-        <a href="/index.html" class="navbar-brand">aflamDB</a>
-        
-        <div id="search-compnent">
-          <input id="search-input" class="form-control  m-auto position-relative" type="search" name="search" id="search-input" placeholder="search for a movie" autocomplete="off">
-          <div id="search-results" class="hide">
-              <ul class="list-group">
-                  <div data-search-lis> </div>
-              </ul>
-          </div>
-        </div>
-        <div><a class="pure-material-button-text" href="/browse.html">Browse Movies</a></div>
+  <div class="offcanvas offcanvas-5 offcanvas-top text-bg-dark" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+    <div class="offcanvas-header">
+      <div id="search-compnent">
+        <input id="search-input" type="search" name="search" placeholder="search for a movie" autocomplete="off">
+      </div>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-</nav>
-    
-    <section id="movie-details">
+    <div class="offcanvas-search-body">
+      <div id="search-results" class="hide">
+        <ul class="list-group">
+            <div data-search-lis> </div>
+        </ul>
+    </div>
+    </div>
+  </div>
+  <div class="app">
+    <div class="sticky-sidenav fs-4">
+      <ul class="sidebar-items">
+        <li>
+          <a href="/" class="side-links">
+            <i class="bi bi-house"></i>
+          </a>
+        </li>
+        <li>
+          <a href="/browse.html" class="side-links">
+            <i class="bi bi-tv"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="side-links" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+            <i class="bi bi-search"></i>
+          </a>
+        </li>
+      </ul>
+      <a href="https://github.com/khaleed-dev" target="_blank" class="side-links link-light p-1 mb-1" style="font-size: 12px">
+        @khaleed-dev
+      </a>
+    </div>
+    <div class="page-content">
+      <section id="movie-details">
         <template class="movie-details-template">
           <div class="banner overlay">
+            <div class="img-wrapper">
               <img src="/images/aflamDB-banner.jpg"` data-movie-banner>
+            </div>
           </div>
-          <div class="container d-flex p-0 mh-300">
+          <div class="container d-flex max-height-300">
               <div class="poster">
-                    <div>
-                        <img src="" data-movie-poster style="width: 300px; max-height: 380px; object-fit: cover;" class="rounded">
-                          <div class="dropdown d-grid mt-2">
-                            <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              Watch Now
+                <div>
+                    <img src="" data-movie-poster style="width: 300px; max-height: 380px; object-fit: cover;" class="rounded">
+                      <div class="dropdown d-grid mt-2">
+                        <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Watch Now
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li>
+                            <a href="" class="watch-egybest dropdown-item d-flex justify-content-between align-items-center" target="_blank">Egybest
+                              <img src="./images/egybest-icon.png" style="width: 18px; height: 18px; object-fit: cover;">
                             </a>
-                            <ul class="dropdown-menu">
-                              <li>
-                                <a href="" class="watch-egybest dropdown-item d-flex justify-content-between align-items-center" target="_blank">Egybest
-                                  <img src="./images/egybest-icon.png" style="width: 18px; height: 18px; object-fit: cover;">
-                                </a>
-                                
-                              </li>
-                              <li>
-                                <a class="watch-dopebox dropdown-item d-flex justify-content-between align-items-center" href="" target="_blank">DopeBox 
-                                  <img src="./images/dopbox-icon.png" style="width: 18px; height: 18px; object-fit: cover;">
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
+                            
+                          </li>
+                          <li>
+                            <a class="watch-dopebox dropdown-item d-flex justify-content-between align-items-center" href="" target="_blank">DopeBox 
+                              <img src="./images/dopbox-icon.png" style="width: 18px; height: 18px; object-fit: cover;">
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                </div>
+                <div class="poster-info ms-3 mt-5 text-light">
+                    <div class="mb-3">
+                        <h1 data-movie-original-name class="d-inline mb-4" ></h1>
+                        <span data-movie-year class="ms-2 fs-4"></span>
                     </div>
-                    <div class="poster-info ms-3 mt-5">
-                        <div class="mb-3">
-                            <h1 data-movie-original-name class="d-inline mb-4" ></h1>
-                            <span data-movie-year class="ms-2 fs-4"></span>
-                        </div>
-                        <div>
-                            <span data-movie-rating></span>
-                            <span data-movie-rating-count></span>
-                        </div>
-                        <div data-movie-genres class="mt-2"></div>
+                    <div>
+                        <span data-movie-rating></span>
+                        <span data-movie-rating-count></span>
                     </div>
+                    <div data-movie-genres class="mt-2"></div>
+                </div>
               </div>
             
               <div class="overview-details-wrapper row ms-0 mt-3 justify-content-center">
@@ -100,31 +125,31 @@
                 </div>
             </div>
         </template>
-    </section>
+      </section>
 
-    <section id="movie-trailer" class="my-5">
-      <div class="container">
-        <div class="card text-bg-dark">
-          <div class="card-header">
-            <div class="container mb-2">
-              <span class="h3 me-2">Trailer</span><span class="views-count"></span>
+      <section id="movie-trailer" class="my-5">
+        <div class="container">
+          <div class="card text-bg-dark">
+            <div class="card-header">
+              <div class="container mb-2">
+                <span class="h3 me-2">Trailer</span><span class="views-count"></span>
+              </div>
+            </div>
+            <div class="card-body text-center">
+                <iframe width="560" height="315" src="" title="Movie Trailer" rel="0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div>
+              
             </div>
           </div>
-          <div class="card-body text-center">
-              <iframe width="560" height="315" src="" title="Movie Trailer" rel="0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-          <div>
-            
-          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="movie-cast" class="my-5">
+      <section id="movie-cast" class="my-5">
         <div class="container text-light">
             <h3>Cast</h3>
             <div id="scroll-menu" class="container-fluid mt-3">
-              <div class="row cast-container">
+              <div class="row cast-container scroll-menu-content">
                 <template class="movie-cast-template">
                   <div class="col">
                     <div class="movie-card p-0" style="width: 180px;">
@@ -139,14 +164,13 @@
               </div>
             </div>
         </div>
-    </section>
+      </section>
 
-
-    <section id="similar-movies" class="mb-5 text-light">
+      <section id="similar-movies" class="mb-5 text-light">
         <div class="container mb-2"><h3>Similar Movies</h3></div>
         <div class="container">
             <div id="scroll-menu" class="container-fluid mt-3">
-                <div class="row similar-movies">
+                <div class="row similar-movies scroll-menu-content">
                   <template class="similar-movies-template">
                     <div class="col">
                       <div class="movie-card p-0" style="width: 180px;">
@@ -173,5 +197,17 @@
               </div>
         </div>
     </section>
+    </div>
+   
+  </div>
+
+
+
+
+
+
+
+
+
 </body>
 </html>

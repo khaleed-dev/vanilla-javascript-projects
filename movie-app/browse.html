@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous" defer></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/search.js" type="module"></script>
+    <script src="./js/browse.js" type="module"></script>
+    <title>Browse Movies</title>
+</head>
+<body>
+  <div class="app">
+    <div class="sticky-sidenav fs-4">
+      <ul class="sidebar-items">
+        <li>
+          <a href="/" class="side-links">
+            <i class="bi bi-house"></i>
+          </a>
+        </li>
+        <li>
+          <a href="/browse.html" class="side-links">
+            <i class="bi bi-tv selected"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="side-links">
+            <i class="bi bi-search"></i>
+          </a>
+        </li>
+      </ul>
+      <a href="https://github.com/khaleed-dev" target="_blank" class="side-links link-light p-1 mb-1" style="font-size: 12px">
+        @khaleed-dev
+      </a>
+    </div>
+    <section id="browse-movies" class="container mt-4 p-5">
+      <h2>Browse Movies <span class="page-count fs-5"></span></h2>
+      <div class="card text-bg-dark border-around mt-3">
+          <div class="card-header p-3">
+            <ul class="list-group d-flex flex-row justify-content-center">
+              <li class="pure-material-button-text activated
+               list-group-item" data-hash="popular">Popular</li>
+              <li class="pure-material-button-text list-group-item" data-hash="now-playing">Now Playing</li>
+              <li class="pure-material-button-text list-group-item" data-hash="best">Best All Time</li>
+            </ul>
+          </div>
+          <div class="card-body">
+              <div class="mb-3 d-flex justify-content-center align-items-center">
+                <!-- dropdowns go here -->
+                <form class = "filters d-flex justify-content-center align-items-center">
+                  <select id="year-filter" class="form-select me-2 filter" title="year-filter">
+                    <option selected value="0" class="text-muted">Year</option>
+                  </select>
+                  <select id="genre-filter" class="form-select me-2 filter" title="genre-filter">
+                    <option selected value="" class="text-muted">Genre</option>
+                    <option value="28">action</option>
+                    <option value="10752">war</option>
+                    <option value="12">adventure</option>
+                    <option value="16">animation</option>
+                    <option value="35">comedy</option>
+                    <option value="80">crime</option>
+                    <option value="99">documentary</option>
+                    <option value="18">drama</option>
+                    <option value="10751">family</option>
+                    <option value="14">fantasy</option>
+                    <option value="36">history</option>
+                    <option value="27">horror</option>
+                    <option value="10402">music</option>
+                    <option value="9648">mystery</option>
+                    <option value="10749">romance</option>
+                    <option value="878">science-fiction</option>
+                    <option value="53">thriller</option>
+                  </select>
+                  <select id="language-filter" class="form-select me-2 filter" title="language-filter">
+                    <option selected value="" class="text-muted">Language</option>
+                  </select>  
+                  <button class="btn btn-sm btn-outline-light ms-3" type="submit" style="width: 500px;">Filter</button>
+                </form>
+
+              </div>
+              <div class="browse-movies-list d-flex flex-wrap justify-content-center">
+                <!-- movies go here -->
+              </div>
+          </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

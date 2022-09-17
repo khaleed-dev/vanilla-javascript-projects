@@ -1,0 +1,136 @@
+/* Media Queries */
+
+@media only screen and (max-width: 1999px) {
+    .carousel-inner .col-4{
+        height: 450px;
+    }
+    .carousel-inner .col-8{
+        height: 450px;
+    }
+    .carousel-overlay{
+        height: 450px;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .app {
+        flex-direction: column;
+        margin-bottom: 85px;
+    }
+    .sticky-sidenav {
+        position: fixed;
+        z-index: 1;
+        top: unset;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: unset;
+        max-height: 75px;
+        background-color: hsl(180, 0%, 5%);
+        border-right: 1px solid hsl(0, 0%, 20%);
+    }
+    .sidebar-items{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        margin: 0 auto;
+    }
+    .side-links {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 75px;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 1rem 2rem;
+        color: hsl(0, 0%, 100%);
+    }
+    .side-links:hover {
+        background-color: hsl(0, 0%, 5%);
+    }
+    .k-dev{
+        display: none;
+    }
+    .carousel-content{
+        width: 200%;
+    }
+    #mw-movies{
+        width: calc(100vw - 15px);
+    }
+    .movie-card{
+        width: 150px;
+    }
+    /* ? movie page */
+    .page-content{
+        width: calc(100vw - 15px);
+    }
+    .banner{
+        display: none;
+    }
+    #movie-details .poster{
+        position: static;
+        transform: translateY(0);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        background-image: linear-gradient(
+        180deg,
+        #000000,
+        #434343
+    );
+    }
+    #movie-details .poster-info{
+        position: static;
+        width: 100%;
+        transform: translateY(0);
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+    iframe{
+        height: 315px;
+        width: 460px;
+    }
+    .max-height-300{
+        max-height: unset;
+    }
+    
+}
+@media only screen and (max-width: 767px) {
+    /* adjust carousel overlay  */
+    .carousel-item .carousel-overlay::after {
+        top: unset;
+        height: 70%;
+        width: 100%;
+        background-image: linear-gradient(
+            0deg,
+            rgb(0, 0, 0),
+            rgb(0, 0, 0, 1),
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0)
+        );
+    }
+    .carousel-small-content{
+        display: block;
+        z-index: 1;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        color: #fff;
+        margin: auto;
+    }
+}
+@media only screen and (max-width: 575px) {
+    .show-none{
+        display: none;
+    }
+    iframe{
+        max-width: 100%;
+        height: auto;
+        width: auto;
+    }
+
+}

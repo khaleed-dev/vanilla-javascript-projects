@@ -185,7 +185,6 @@ setTimeout(() => {
 }, 2000);
 
 
-
 /*
 ? Movie Details to get:
 section 1:

@@ -113,7 +113,7 @@ span {
 
 
 /*TODO HOME PAGE */
-/* ? side nav */
+/*  side nav */
 .sticky-sidenav {
     position: sticky;
     top: 0;
@@ -127,7 +127,6 @@ span {
     justify-content: space-between;
     height: 100vh;
     border-right: 1px solid hsl(0, 0%, 20%);
-    /* display: none; */
 }
 .side-links {
     display: flex;
@@ -144,10 +143,6 @@ span {
 
 /* ? carousel "slider" */
 
-#landing-carousel{
-    max-height: 600px;
-    margin-right: 10px;
-}
 .carousel-inner .col-4{
     max-height: 600px;
 }
@@ -156,9 +151,8 @@ span {
 }
 .carousel-inner img{
     object-fit: cover;
-}
-.carousel-overlay{
-    max-height: 600px;
+    /* width: 100%; */
+    height: auto;
 }
 .carousel-content {
     display: flex;
@@ -166,11 +160,13 @@ span {
     justify-content: center;
     padding: 2rem;
     max-height: 600px;
-    width: 150%;
+    width: 170%;
     z-index: 99;
     height: 100%;
 }
-
+.carousel-overlay{
+    max-height: 600px; 
+}
 .carousel-item .carousel-overlay::after {
     content: "";
     position: absolute;
@@ -229,7 +225,7 @@ span {
     max-width: 600px;
 }
 
-/* Movie Page */
+/* TODO Movie Page */
 .page-content{
     flex-grow: 1;
     width: calc(100vw - 125px);
@@ -260,7 +256,7 @@ span {
 #movie-details .poster-info{
     width: 33rem;
     position: absolute;
-    transform: translateX(57%);
+    transform: translateX(48%);
     color: black;
 }
 [data-movie-overview]{
@@ -286,7 +282,7 @@ span {
 .container{
     max-width: 1660px;
 }
-.overlay:after {
+.overlay:before {
     content:"";
     display:block;
     position:absolute;

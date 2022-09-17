@@ -20,9 +20,15 @@ function addCarouselContent(){
         // skip if no backdrop image
         if(movie.backdrop_path == undefined || movie.backdrop_path === '') return 
         const ct = carouselItemTemplate.content.cloneNode(true)
-        ct.querySelector('[data-caro-title]').innerHTML = movie.title
-        ct.querySelector('[data-caro-reviews]').innerText = `${(movie.vote_average).toFixed(1)}`
-        ct.querySelector('[data-caro-year]').innerText = movie.release_date
+        ct.querySelectorAll('[data-caro-title]').forEach((item) => {
+            item.innerHTML = movie.title
+        })
+        ct.querySelectorAll('[data-caro-reviews]').forEach((item) => {
+            item.innerText = `${(movie.vote_average).toFixed(1)}`
+        })
+        ct.querySelectorAll('[data-caro-year]').forEach((item) => {
+            item.innerText = movie.release_date
+        })
         // set character limit for description without cutting words
         let description = movie.overview
         if(description.length > 170){
@@ -31,7 +37,9 @@ function addCarouselContent(){
             description += ' ...'
         }
         ct.querySelector('[data-caro-description]').innerText = description
-        ct.querySelector('[data-caro-details-btn]').href = `/movie.html?id=${movie.id}`
+        ct.querySelectorAll('[data-caro-details-btn]').forEach((item) => {
+            item.href = `/movie.html?id=${movie.id}`
+        })
         ct.querySelector('[data-caro-backdrop]').src = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
         carouselInner.append(ct)
     })
@@ -45,7 +53,7 @@ function renderDailyTrends(){
         <div class="col">
             <div class="movie-card p-0" style="width: 210px;">
                 <a href="/movie.html?id=${movie.id}">
-                    <img class="movie-card-img rounded w-100 mb-2" src="https://image.tmdb.org/t/p/original/${movie.poster_path}">
+                    <img class="movie-card-img img-fluid rounded mb-2" src="https://image.tmdb.org/t/p/original/${movie.poster_path}">
                 </a>
                 <div class="movie-card-header d-flex justify-content-between">
                     <h5>${movie.title}</h5>
@@ -71,7 +79,7 @@ function randomThree(array){
     // generate an array of three unique random numbers between 0 and array.length
     let randomNumbers = []
     while(randomNumbers.length < 3){
-        let random = Math.round(Math.random() * array.length)
+        let random = Math.round(Math.random() * (array.length - 1))
         if(!randomNumbers.includes(random)){
             randomNumbers.push(random)
         }

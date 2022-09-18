@@ -23,13 +23,16 @@ document.addEventListener('click', (e) => {
     if(!offcanvas.classList.contains('show')){
         UIHideSearchResults()
     }
+    if(e.target.matches('.bi-search') || e.target.parentNode.matches('.search-btn')){
+        document.querySelector('.search-btn').href = `/explore.html?query=${UISearchInput.value}`
+    }
 })
 UISearchInput.addEventListener('keyup', (e) => {
     //hide search trends while typing and show query results suggestions
     hideSearchTrends()
     const searchQuery = UISearchInput.value
     if(searchQuery !== '') showSearchRecommendations(searchQuery)
-    if(e.key === 'Enter'){
+    if(e.key === 'Enter' && searchQuery !== ''){
         window.location.href = `${WEBSITE}/explore.html?query=${searchQuery}`
     }else if(e.key === 'Escape'){
         UISearchInput.value = ''
@@ -48,7 +51,9 @@ async function showSearchRecommendations(query){
         if(count > 9) return
         UISearchLis.innerHTML += 
         `
-        <a class="list-group-item list-group-item-action d-flex justify-content-between" href="http://127.0.0.1:5500/explore.html?query=${result.title}"><div>${result.title} <small class="text-muted ">(${release_year})</small></div><small class="fs-6 text-muted">${result.original_title}</small></a>`
+        <a class="list-group-item list-group-item-action d-flex justify-content-between" href="/movie.html?id=${result.id}"><div>${result.title} <small class="text-muted ">(${release_year})</small></div><small class="fs-6 text-muted">${result.original_title}</small></a>`
+        // `
+        // <a class="list-group-item list-group-item-action d-flex justify-content-between" href="http://127.0.0.1:5500/explore.html?query=${result.title}"><div>${result.title} <small class="text-muted ">(${release_year})</small></div><small class="fs-6 text-muted">${result.original_title}</small></a>`
         count ++
     })
 }
@@ -58,11 +63,11 @@ function showSearchTrends(){
     weeklyTrends.forEach((result) => {
         if(result.title == undefined){
             UISearchLis.innerHTML += `
-            <a class="list-group-item list-group-item-action search-trends" href="http://127.0.0.1:5500/explore.html?query=${result.name}">${result.name}</a>
+            <a class="list-group-item list-group-item-action search-trends" href="/movie.html?id=${result.id}">${result.name}</a>
             `
         }else{
             UISearchLis.innerHTML += `
-            <a class="list-group-item list-group-item-action search-trends" href="http://127.0.0.1:5500/explore.html?query=${result.title}">${result.title}</a>
+            <a class="list-group-item list-group-item-action search-trends" href="/movie.html?id=${result.id}">${result.title}</a>
             `
         }
     })

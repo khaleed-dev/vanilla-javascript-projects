@@ -2,24 +2,43 @@ import Tmdb from "./tmdb.js"
 
 // data source
 const tmdb = new Tmdb
-let dailyTrends = await tmdb.getMovieTrendingDaily()
-dailyTrends = dailyTrends.results
-
+const dailyTrends = await tmdb.getMovieTrendingDaily()
+const dailyTrendsRes = dailyTrends.results
 
 // dom elements
 const carouselSection = document.getElementById('slider')
 const carouselInner = document.querySelector('.carousel-inner')
 const carouselItemTemplate = document.querySelector('#carousel-items-template')
+const modal = document.querySelector('.modal')
+const modalBtn = document.querySelector('.carousel-trailer-btn')
+const modalVideo = document.querySelector('.modal-trailer')
 
+// youtube modal logic
+document.addEventListener('click', (e) => {
+    if(e.target.matches('.carousel-trailer-btn')){
+        const id = e.target.dataset.movieId
+        getTrailer(id).then((trailer) => {
+            if(trailer != undefined){
+                modalVideo.src = `https://www.youtube.com/embed/${trailer.key}?autoplay=1`
+            }
+        })
+    }
+    if(e.target.matches('.modal') || e.target.matches('.btn-close')){
+        modalVideo.src = null;
+    }
+})  
 
 function addCarouselContent(){
     // get three random trending today movies and show them in carousel
-    const randomNumbers = randomThree(dailyTrends)
+    const randomNumbers = randomThree(dailyTrendsRes)
     randomNumbers.forEach((number) => {
-        const movie = dailyTrends[number]
+        const movie = dailyTrendsRes[number]
         // skip if no backdrop image
         if(movie.backdrop_path == undefined || movie.backdrop_path === '') return 
         const ct = carouselItemTemplate.content.cloneNode(true)
+        ct.querySelectorAll('.carousel-trailer-btn').forEach((item) => {
+            item.dataset.movieId = movie.id
+        })
         ct.querySelectorAll('[data-caro-title]').forEach((item) => {
             item.innerHTML = movie.title
         })
@@ -48,7 +67,7 @@ function addCarouselContent(){
 }
 function renderDailyTrends(){
     const wrapper = document.querySelector('#scroll-menu .row')
-    dailyTrends.forEach((movie) => {
+    dailyTrendsRes.forEach((movie) => {
         wrapper.innerHTML += `
         <div class="col">
             <div class="movie-card p-0" style="width: 210px;">
@@ -74,6 +93,23 @@ function renderDailyTrends(){
         `
     })
 }
+async function getTrailer(id){
+    let re = /official trailer/gi
+    let trailer = await tmdb.getMovieDetails(id)
+    trailer = trailer.videos.results
+    trailer = trailer.find((result) => {
+        if(re.test(result.name) || result.type === "Trailer"){
+            return true
+        }
+        return false
+    })
+    if(trailer != undefined){
+        return trailer
+    }
+    
+    return trailer
+}
+
 // utility functions
 function randomThree(array){
     // generate an array of three unique random numbers between 0 and array.length

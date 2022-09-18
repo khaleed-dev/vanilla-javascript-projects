@@ -1,14 +1,14 @@
 /* Media Queries */
 
-@media only screen and (max-width: 1999px) {
+@media only screen and (max-width: 1980px) {
     .carousel-inner .col-4{
-        height: 450px;
+        height: 100%;
     }
     .carousel-inner .col-8{
-        height: 450px;
+        height: 100%;
     }
     .carousel-overlay{
-        height: 450px;
+        height: 100%;
     }
 }
 
@@ -59,9 +59,6 @@
     #mw-movies{
         width: calc(100vw - 15px);
     }
-    .movie-card{
-        width: 150px;
-    }
     /* ? movie page */
     .page-content{
         width: calc(100vw - 15px);
@@ -97,7 +94,11 @@
     .max-height-300{
         max-height: unset;
     }
-    
+    .modal-dialog{
+        max-width: 100%;
+        max-height: 100%;
+        margin: auto;
+    }
 }
 @media only screen and (max-width: 767px) {
     /* adjust carousel overlay  */
@@ -118,9 +119,18 @@
         z-index: 1;
         position: absolute;
         bottom: 0;
-        width: 100%;
+        width: 70%;
         color: #fff;
         margin: auto;
+    }
+    .movie-card{
+        width: 150px !important;
+    }
+    .movie-card h5{
+        font-size: 16px;
+    }
+    #scroll-menu{
+        height: 330px;
     }
 }
 @media only screen and (max-width: 575px) {
@@ -132,5 +142,13 @@
         height: auto;
         width: auto;
     }
-
+    .carousel-inner .col-4{
+        height: 40vh;
+    }
+    .carousel-inner .col-8{
+        height: 40vh;
+    }
+    .carousel-overlay{
+        height: 40vh;
+    }
 }

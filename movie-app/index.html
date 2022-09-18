@@ -16,10 +16,13 @@
 <body>
   <div class="offcanvas offcanvas-5 offcanvas-top text-bg-dark" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
     <div class="offcanvas-header">
-      <div id="search-compnent">
+      <a href="#" class="search-btn">
+        <i class="bi bi-search d-block"></i>
+      </a>
+      <div id="search-component">
         <input id="search-input" type="search" name="search" placeholder="search for a movie" autocomplete="off">
       </div>
-      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      <button type="button" class="btn-close btn-close-white me-3 p-3" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-search-body">
       <div id="search-results" class="hide">
@@ -90,6 +93,19 @@
     </div>
   </div>
 
+  <!-- ? modals -->
+  <div class="modal fade" id="showTrailer" tabindex="-1" aria-labelledby="movieTrailer" aria-hidden="true" style="background-color: rgba(0,0,0,0.7);">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content p-1">
+        <div class="modal-body">
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div class="ratio ratio-16x9">
+            <iframe src="" title="Movie Trailer" rel="0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;" allowfullscreen class="modal-trailer"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- ? HTML templates -->
   <template id="carousel-items-template">
     <div class="carousel-item">
@@ -107,13 +123,14 @@
                 <p class="mb-4 lead" data-caro-description></p>
                 <div>
                   <a data-caro-details-btn href="" class="btn btn-primary me-3">Movie Details</a>
+                  <button class="pure-material-button-text carousel-trailer-btn" data-bs-toggle="modal" data-bs-target="#showTrailer">Watch Trailer</button>
                 </div>
               </div>
             </div>
             <img src="" class="col col-md-9" alt="movie-backdrop" data-caro-backdrop>
             <div class="carousel-small-content d-md-none">
               <div class="carousel-content">
-                <h2 class="mb-3" data-caro-title></h2>
+                <h4 class="mb-3" data-caro-title></h4>
                 <div class="d-flex mb-3">
                   <i class="bi-star-fill me-2"></i>
                   <div class="reviews" data-caro-reviews></div>
@@ -122,6 +139,7 @@
                 </div>
                 <div>
                   <a data-caro-details-btn href="" class="btn btn-primary me-3">Movie Details</a>
+                  <button class="pure-material-button-text carousel-trailer-btn" data-bs-toggle="modal" data-bs-target="#showTrailer">Watch Trailer</button>
                 </div>
               </div>
             </div>

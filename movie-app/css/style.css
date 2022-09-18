@@ -64,11 +64,15 @@ span {
 .offcanvas-header{
     height: 5rem !important;
 }
+.offcanvas-header a{
+    padding: 10px 15px;
+    color: #fff;
+}
 .offcanvas-search-body{
     padding: 0 1rem;
     overflow-y: scroll;
 }
-#search-compnent{
+#search-component{
     position: relative;
     width: 100%;
     height: 100%;
@@ -76,7 +80,7 @@ span {
     flex-direction: row;
     padding: 0 1rem;
 }
-#search-compnent #search-input{
+#search-component #search-input{
     position: absolute;
     top: 0;
     left: 0;
@@ -89,7 +93,7 @@ span {
     z-index: 99;
     background-color: rgba(0, 0, 0, 0);
     border: 0;
-    padding-left: 25px;
+    padding-left: 15px;
 }
 #search-input{
     color: #fff;
@@ -110,7 +114,11 @@ span {
     background-color: hsl(0, 0%, 25%);
     color: #fff; 
 }
-
+/* ? Modal modifications */
+.modal-content{
+    background: transparent !important;
+    border: none !important;
+}
 
 /*TODO HOME PAGE */
 /*  side nav */
@@ -151,8 +159,7 @@ span {
 }
 .carousel-inner img{
     object-fit: cover;
-    /* width: 100%; */
-    height: auto;
+    height: 100%;
 }
 .carousel-content {
     display: flex;
@@ -185,12 +192,25 @@ span {
     );
 }
 
+/* ? Trailer Modal */
+.close-modal-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: rgb(56, 56, 56) 1px solid;
+    border-radius: 3px;
+    padding: 2px;
+}
+.modal-dialog{
+    max-width: 80%;
+    max-height: 80%;
+    margin: auto;
+}
 
 
 /* ? Horizontal Scroller */
 #mw-movies{
     /* padding: 1rem; */
-    margin-left: 12px;
     border: 1px solid hsl(0, 0%, 14%);
     width: calc(100vw - 125px);
 }
@@ -219,7 +239,9 @@ span {
 .movie-card-img:hover{
     transform: scale(0.989); 
 }
-
+.movie-card{
+    max-width: 210px !important;
+}
 /* TODO browse movies page */
 .filters{
     max-width: 600px;
@@ -266,9 +288,6 @@ span {
 .extra-movie-details{
     max-height: 200px;
     overflow-y: scroll;
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* flex-flow: column wrap; */
 }
 
 
@@ -378,5 +397,4 @@ span {
 .activated{
     background-color: rgba(0, 57, 179, 0.2);
 }
-
 

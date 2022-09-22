@@ -1,5 +1,4 @@
 import Tmdb from "./tmdb.js"
-const WEBSITE = "http://127.0.0.1:5500"
 
 //? selectors
 const UISearchInput = document.querySelector('#search-input')
@@ -33,7 +32,7 @@ UISearchInput.addEventListener('keyup', (e) => {
     const searchQuery = UISearchInput.value
     if(searchQuery !== '') showSearchRecommendations(searchQuery)
     if(e.key === 'Enter' && searchQuery !== ''){
-        window.location.href = `${WEBSITE}/explore.html?query=${searchQuery}`
+        window.location.href = `/explore.html?query=${searchQuery}`
     }else if(e.key === 'Escape'){
         UISearchInput.value = ''
         UIHideSearchResults()

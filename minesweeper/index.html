@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <script src="./script.js" type="module"></script>
+  <title>Minesweeper</title>
+</head>
+<body>
+  <h1>MineSweeper<span>💣</span></h1>
+    <div class="game-header">
+        <div class="digital-scrn" data-mine-count></div>
+        <button data-emoji>😀</button>
+        <div class="digital-scrn timer">000</div>
+    </div>
+
+    <div class="notification"></div>
+
+  <div class="board"></div>
+  
+  <div class="game-options">
+    <label for="difficulty">Game Level</label>
+    <select name="difficulty" id="difficulty">
+      <option value="beginner">Beginner</option>
+      <option value="intermediate">Intermediate</option>
+      <option value="expert">Expert</option>
+      <option value="test">Test</option>
+    </select>
+  </div>
+  <div class="footer">
+    <a href="https://github.com/khaleed-dev/vanilla-javascript-projects/tree/main/minesweeper" target="_blank">Source Code: @khaleed-dev</a>
+    <a href="https://www.youtube.com/watch?v=dvvrOeITzG8" target="_blank">How To Play?</a>
+  </div>
+</body>
+</html>
